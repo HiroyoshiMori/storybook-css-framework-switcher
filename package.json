@@ -1,16 +1,16 @@
 {
-  "name": "storybook-addon-kit",
+  "name": "storybook-css-framework-switcher",
   "version": "0.0.0",
-  "description": "everything you need to build a Storybook addon",
+  "description": "Easy switcher it switches CSS Framework used in preview",
   "keywords": [
-    "storybook-addons"
+    "storybook-addons", "css framework", "storybook-addons"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/storybookjs/storybook-addon-kit"
+    "url": "https://github.com/HiroyoshiMori/storybook-css-framework-switcher"
   },
   "license": "MIT",
-  "author": "package-author",
+  "author": "Hiroyoshi Mori <mori@scriptlab.tokyo>",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -32,7 +32,6 @@
     "*.d.ts"
   ],
   "scripts": {
-    "postinstall": "node scripts/welcome.js",
     "clean": "rimraf ./dist",
     "prebuild": "npm run clean",
     "build": "tsup",
@@ -89,9 +88,9 @@
     "previewEntries": ["src/preview.ts"]
   },
   "storybook": {
-    "displayName": "Addon Kit",
+    "displayName": "CSS Framework Switcher",
     "supportedFrameworks": [
-      "supported-frameworks"
+      "react"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
   }
