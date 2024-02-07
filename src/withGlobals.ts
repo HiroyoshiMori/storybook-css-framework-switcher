@@ -24,7 +24,8 @@ export const withGlobals = (
     const selector = isInDocs
       ? `#anchor--${context.id} .sb-story`
       : "#storybook-root";
-    const selectorId = isInDocs ? `css-framework-switcher-docs-${context.id}` : `css-framework-switcher`;
+    // const selectorId = isInDocs ? `css-framework-switcher-docs-${context.id}` : `css-framework-switcher`;
+    const selectorId = isInDocs ? `css-framework-switcher-docs` : `css-framework-switcher`;
 
     // displayToolState(selector, {
     //   selectedFramework,
