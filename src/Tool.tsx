@@ -47,9 +47,8 @@ export const Tool = memo(function MyAddonSelector() {
           active={selectedFramework && selectedFramework.id !== ''}
           title="Switch CSS Framework"
           onClick={() => setExpanded(true)}
-          className={'tooltip'}
         >
-          <Icons icon="lightning" style={{position: 'relative'}} />
+          <Icons icon="document" />
         </IconButton>
       </WithTooltip>
     </Fragment>

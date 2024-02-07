@@ -26,11 +26,11 @@ export const withGlobals = (
       : "#storybook-root";
     const selectorId = isInDocs ? `css-framework-switcher-docs-${context.id}` : `css-framework-switcher`;
 
-    displayToolState(selector, {
-      selectedFramework,
-      isInDocs,
-      theme,
-    });
+    // displayToolState(selector, {
+    //   selectedFramework,
+    //   isInDocs,
+    //   theme,
+    // });
 
     if (selectedFramework === undefined || selectedFramework === false) {
       clearStyles(selectorId);

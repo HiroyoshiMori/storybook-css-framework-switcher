@@ -38,8 +38,8 @@ const preview: Preview = {
   parameters: {
     cssFrameworkSwitcher: {
       frameworks: [
-        { id: 'Cirrus', srcPath: '/node_modules/cirrus-ui/dist/cirrus-all.css' },  // ID and css path
-        { id: 'Bulma', srcPath: '/node_modules/bulma/css/bulma.css' },
+        { id: 'Cirrus', srcPath: '/somewhere/cirrus-ui/dist/cirrus-all.css' },  // ID and css path
+        { id: 'Bulma', srcPath: '/somewhere/bulma/css/bulma.css' },
       ],
     },
   },
