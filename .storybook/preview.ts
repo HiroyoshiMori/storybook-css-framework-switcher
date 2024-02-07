@@ -12,6 +12,12 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    cssFrameworkSwitcher: {
+      frameworks: [
+        { id: 'Cirrus', srcPath: '/node_modules/cirrus-ui/dist/cirrus-all.css' },
+        { id: 'Bulma', srcPath: '/node_modules/bulma/css/bulma.css' }
+      ],
+    },
   },
 };
 

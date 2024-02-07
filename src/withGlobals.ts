@@ -3,17 +3,19 @@ import type {
   PartialStoryFn as StoryFunction,
   StoryContext,
 } from "@storybook/types";
-import { useEffect, useGlobals } from "@storybook/preview-api";
+import { useEffect, useGlobals, useMemo } from "@storybook/preview-api";
 import { PARAM_KEY } from "./constants";
+import { addCssFramework, clearStyles } from "./helper";
 
 export const withGlobals = (
   StoryFn: StoryFunction<Renderer>,
   context: StoryContext<Renderer>
 ) => {
   const [globals] = useGlobals();
-  const myAddon = globals[PARAM_KEY];
+  const selectedFramework = globals[PARAM_KEY];
   // Is the addon being used in the docs panel
   const isInDocs = context.viewMode === "docs";
+
   const { theme } = context.globals;
 
   useEffect(() => {
@@ -22,13 +24,30 @@ export const withGlobals = (
     const selector = isInDocs
       ? `#anchor--${context.id} .sb-story`
       : "#storybook-root";
+    const selectorId = isInDocs ? `css-framework-switcher-docs-${context.id}` : `css-framework-switcher`;
 
     displayToolState(selector, {
-      myAddon,
+      selectedFramework,
       isInDocs,
       theme,
     });
-  }, [myAddon, theme]);
+
+    if (selectedFramework === undefined || selectedFramework === false) {
+      clearStyles(selectorId);
+    } else {
+      if (typeof selectedFramework === 'object' && selectedFramework.id !== undefined && selectedFramework.srcPath !== undefined) {
+        try {
+          addCssFramework(selectorId, selectedFramework.srcPath);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    }
+
+    return () => {
+      clearStyles(selectorId);
+    };
+  }, [selectedFramework, theme]);
 
   return StoryFn();
 };

@@ -1,9 +1,10 @@
 {
-  "name": "storybook-css-framework-switcher",
+  "name": "@hiroyoshi-mori/storybook-css-framework-switcher",
   "version": "0.0.0",
   "description": "Easy switcher it switches CSS Framework used in preview",
   "keywords": [
-    "storybook-addons", "css framework", "storybook-addons"
+    "css framework",
+    "storybook-addons"
   ],
   "repository": {
     "type": "git",
@@ -37,7 +38,7 @@
     "build": "tsup",
     "build:watch": "npm run build -- --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "run-p build:watch 'storybook --quiet'",
+    "start": "run-p build:watch storybook",
     "prerelease": "zx scripts/prepublish-checks.mjs",
     "release": "npm run build && auto shipit",
     "eject-ts": "zx scripts/eject-typescript.mjs",
@@ -45,27 +46,31 @@
     "build-storybook": "storybook build"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "7.0.0",
-    "@storybook/addon-interactions": "7.0.0",
-    "@storybook/addon-links": "7.0.0",
-    "@storybook/blocks": "7.0.0",
-    "@storybook/components": "7.0.0",
-    "@storybook/core-events": "7.0.0",
-    "@storybook/manager": "^7.6.0",
-    "@storybook/manager-api": "7.0.0",
-    "@storybook/preview": "^7.6.0",
-    "@storybook/preview-api": "7.0.0",
-    "@storybook/react": "7.0.0",
-    "@storybook/react-vite": "7.0.0",
+    "@babel/traverse": "^7.23.9",
+    "@storybook/addon-essentials": "7.6.12",
+    "@storybook/addon-interactions": "7.6.12",
+    "@storybook/addon-links": "7.6.12",
+    "@storybook/addon-mdx-gfm": "^7.6.12",
+    "@storybook/blocks": "7.6.12",
+    "@storybook/components": "7.6.12",
+    "@storybook/core-events": "7.6.12",
+    "@storybook/manager": "^7.6.12",
+    "@storybook/manager-api": "7.6.12",
+    "@storybook/preview": "^7.6.12",
+    "@storybook/preview-api": "7.6.12",
+    "@storybook/react": "7.6.12",
+    "@storybook/react-vite": "^7.6.12",
     "@storybook/testing-library": "^0.2.2",
-    "@storybook/theming": "7.0.0",
-    "@storybook/types": "7.0.0",
+    "@storybook/theming": "7.6.12",
+    "@storybook/types": "7.6.12",
     "@types/node": "^18.15.0",
     "@types/react": "^16.14.51",
     "@types/react-dom": "^16.9.22",
     "@vitejs/plugin-react": "^4.1.1",
     "auto": "^11.0.4",
     "boxen": "^7.1.1",
+    "bulma": "^0.9.4",
+    "cirrus-ui": "^0.7.2-patch.1",
     "dedent": "^1.5.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.0.3",
@@ -73,19 +78,33 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "rimraf": "^5.0.5",
-    "storybook": "7.0.0",
+    "simple-update-notifier": "^2.0.0",
+    "storybook": "7.6.12",
+    "ts-dedent": "^2.2.0",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
-    "vite": "^4.5.0",
+    "vite": "^5.0.12",
     "zx": "^7.2.3"
+  },
+  "overrides": {
+    "@babel/traverse": "$@babel/traverse",
+    "@storybook/react-vite": "$@storybook/react-vite",
+    "simple-update-notifier": "$simple-update-notifier",
+    "vite": "$vite"
   },
   "publishConfig": {
     "access": "public"
   },
   "bundler": {
-    "exportEntries": ["src/index.ts"],
-    "managerEntries": ["src/manager.ts"],
-    "previewEntries": ["src/preview.ts"]
+    "exportEntries": [
+      "src/index.ts"
+    ],
+    "managerEntries": [
+      "src/manager.ts"
+    ],
+    "previewEntries": [
+      "src/preview.ts"
+    ]
   },
   "storybook": {
     "displayName": "CSS Framework Switcher",
