@@ -1,5 +1,8 @@
 # Storybook Addon CSS Framework Switcher
-Easy switcher it switches CSS Framework used in preview
+Easy switcher it switches CSS Framework used in preview and add environment variable CSS_FRAMEWORK which can be
+used to identify which css framework is used now
+![Github](https://img.shields.io/github/v/release/HiroyoshiMori/storybook-css-framework-switcher)
+
 
 ## Installation
 
@@ -23,6 +26,10 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@hiroyoshi-mori/storybook-css-framework-switcher', // 👈 register the addon here
   ],
+  staticDirs: [
+    { from: '../node_modules/cirrus-ui/dist/', to: '/assets/cirrus-ui'}, // 👈 Copy files from css framework dist directories to /assets
+    { from: '../node_modules/bulma/css/', to: '/assets/bulma'},
+  ],
 };
 
 export default config;
@@ -38,10 +45,14 @@ const preview: Preview = {
   parameters: {
     cssFrameworkSwitcher: {
       frameworks: [
-        { id: 'Cirrus', srcPath: '/somewhere/cirrus-ui/dist/cirrus-all.css' },  // ID and css path
-        { id: 'Bulma', srcPath: '/somewhere/bulma/css/bulma.css' },
+        { id: 'Cirrus', srcPath: '/assets/cirrus-ui/cirrus-all.css' },  // 👈 Set ID and css path to load
+        { id: 'Bulma', srcPath: '/assets/bulma/bulma.css' },
       ],
     },
   },
 };
 ```
+
+## Copyright and license ![Github](https://img.shields.io/github/license/HiroyoshiMori/storybook-css-framework-switcher?logo=Github)
+
+Copyright 2024 Hiroyoshi Mori / Script Laboratory.

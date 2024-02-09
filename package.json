@@ -1,6 +1,6 @@
 {
   "name": "@hiroyoshi-mori/storybook-css-framework-switcher",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Easy switcher it switches CSS Framework used in preview",
   "keywords": [
     "css framework",

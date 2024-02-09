@@ -35,10 +35,12 @@ export const withGlobals = (
 
     if (selectedFramework === undefined || selectedFramework === false) {
       clearStyles(selectorId);
+      delete process.env.CSS_FRAMEWORK;
     } else {
       if (typeof selectedFramework === 'object' && selectedFramework.id !== undefined && selectedFramework.srcPath !== undefined) {
         try {
           addCssFramework(selectorId, selectedFramework.srcPath);
+          process.env['CSS_FRAMEWORK'] = selectedFramework.id;
         } catch (error) {
           console.error(error);
         }
