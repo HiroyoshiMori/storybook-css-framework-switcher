@@ -1,4 +1,6 @@
 import { global } from '@storybook/global';
+import { addons } from "@storybook/manager-api";
+import { FORCE_RE_RENDER } from "@storybook/core-events";
 
 export const clearStyles = (selector: string | string[]) => {
   const selectors = Array.isArray(selector) ? selector : [selector];
@@ -10,6 +12,7 @@ const clearStyle = (input: string | string[]) => {
   const element = global.document.getElementById(selector);
   if (element && element.parentElement) {
     element.parentElement.removeChild(element);
+    addons.getChannel().emit(FORCE_RE_RENDER);
   }
 };
 
@@ -27,4 +30,6 @@ export const addCssFramework = (selector: string, srcPath: string) => {
     style.href = srcPath;
     global.document.head.appendChild(style);
   }
+
+  addons.getChannel().emit(FORCE_RE_RENDER);
 };
