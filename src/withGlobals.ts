@@ -3,7 +3,7 @@ import type {
   PartialStoryFn as StoryFunction,
   StoryContext,
 } from "@storybook/types";
-import { useEffect, useGlobals, useMemo } from "@storybook/preview-api";
+import { useEffect, useGlobals } from "@storybook/preview-api";
 import { PARAM_KEY } from "./constants";
 import { addCssFramework, clearStyles } from "./helper";
 
@@ -21,9 +21,9 @@ export const withGlobals = (
   useEffect(() => {
     // Execute your side effect here
     // For example, to manipulate the contents of the preview
-    const selector = isInDocs
-      ? `#anchor--${context.id} .sb-story`
-      : "#storybook-root";
+    // const selector = isInDocs
+    //   ? `#anchor--${context.id} .sb-story`
+    //   : "#storybook-root";
     // const selectorId = isInDocs ? `css-framework-switcher-docs-${context.id}` : `css-framework-switcher`;
     const selectorId = isInDocs ? `css-framework-switcher-docs` : `css-framework-switcher`;
 
