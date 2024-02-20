@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "@babel/traverse": "^7.23.9",
+    "@picocss/pico": "^2.0.3",
     "@storybook/addon-essentials": "^7.6.13",
     "@storybook/addon-interactions": "^7.6.13",
     "@storybook/addon-links": "^7.6.13",

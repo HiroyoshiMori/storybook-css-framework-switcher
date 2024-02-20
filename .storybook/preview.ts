@@ -15,7 +15,8 @@ const preview: Preview = {
     cssFrameworkSwitcher: {
       frameworks: [
         { id: 'Cirrus', srcPath: '/node_modules/cirrus-ui/dist/cirrus-all.css' },
-        { id: 'Bulma', srcPath: '/node_modules/bulma/css/bulma.css' }
+        { id: 'Bulma', srcPath: '/node_modules/bulma/css/bulma.css' },
+        { id: 'pico', srcPath: '/node_modules/@picocss/pico/css/pico.css' }
       ],
     },
   },
