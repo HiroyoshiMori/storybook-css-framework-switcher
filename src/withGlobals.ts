@@ -38,7 +38,7 @@ export const withGlobals = (
     } else {
       if (typeof selectedFramework === 'object' && selectedFramework.id !== undefined && selectedFramework.srcPath !== undefined) {
         try {
-          addCssFramework(selectorId, selectedFramework.srcPath);
+          addCssFramework(selectorId, selectedFramework.srcPath, selectedFramework.id);
         } catch (error) {
           console.error(error);
         }

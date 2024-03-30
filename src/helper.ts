@@ -10,13 +10,17 @@ export const clearStyles = (selector: string | string[]) => {
 const clearStyle = (input: string | string[]) => {
   const selector = typeof input === 'string' ? input : input.join('');
   const element = global.document.getElementById(selector);
+  const elementScript = global.document.getElementById(selector + '_script');
   if (element && element.parentElement) {
     element.parentElement.removeChild(element);
-    addons.getChannel().emit(FORCE_RE_RENDER);
   }
+  if (elementScript && elementScript.parentElement) {
+    elementScript.parentElement.removeChild(elementScript);
+  }
+  addons.getChannel().emit(FORCE_RE_RENDER);
 };
 
-export const addCssFramework = (selector: string, srcPath: string) => {
+export const addCssFramework = (selector: string, srcPath: string, frameworkName: string | undefined) => {
   const existingStyle = global.document.getElementById(selector) as HTMLLinkElement;
   if (existingStyle) {
     if (existingStyle.href !== srcPath) {
@@ -29,6 +33,12 @@ export const addCssFramework = (selector: string, srcPath: string) => {
     style.setAttribute('type', 'text/css');
     style.href = srcPath;
     global.document.head.appendChild(style);
+    if (frameworkName !== undefined) {
+      const script = global.document.createElement('script');
+      script.setAttribute('id', selector + '_script');
+      script.innerText = `CSSFrameworkUsed = "${frameworkName}";`
+      global.document.head.appendChild(script);
+    }
   }
 
   addons.getChannel().emit(FORCE_RE_RENDER);
