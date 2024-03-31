@@ -23,20 +23,18 @@ export const Tool = memo(function MyAddonSelector() {
           <Tooltip
             selected={selectedFramework}
             options={cssFrameworks}
-            setFramework={(name, srcPath, forcedUpdate=false) => {
+            setFramework={(name: string, srcPath: string, forceReRender: boolean = true) => {
               updateGlobals({
                 [PARAM_KEY]: {
                   id: name,
                   srcPath: srcPath,
+                  woReRender: !forceReRender,
                 },
               });
             }}
-            resetFramework={() => {
+            resetFramework={(forceReRender: boolean = true) => {
               updateGlobals({
-                [PARAM_KEY]: {
-                  id: undefined,
-                  srcPath: undefined,
-                },
+                [PARAM_KEY]: false,
               });
             }}
           />

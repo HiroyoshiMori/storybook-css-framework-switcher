@@ -33,12 +33,14 @@ export const withGlobals = (
     //   theme,
     // });
 
+    let forceReRender = true;
     if (selectedFramework === undefined || selectedFramework === false) {
-      clearStyles(selectorId);
+      clearStyles(selectorId, forceReRender);
     } else {
+       forceReRender = selectedFramework.woReRender !== undefined ? !selectedFramework.woReRender : true;
       if (typeof selectedFramework === 'object' && selectedFramework.id !== undefined && selectedFramework.srcPath !== undefined) {
         try {
-          addCssFramework(selectorId, selectedFramework.srcPath, selectedFramework.id);
+          addCssFramework(selectorId, selectedFramework.srcPath, selectedFramework.id, forceReRender);
         } catch (error) {
           console.error(error);
         }
@@ -46,7 +48,7 @@ export const withGlobals = (
     }
 
     return () => {
-      clearStyles(selectorId);
+      // clearStyles(selectorId, false);
     };
   }, [selectedFramework, theme]);
 

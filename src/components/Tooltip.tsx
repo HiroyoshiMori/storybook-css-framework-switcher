@@ -11,8 +11,8 @@ import { Radio } from "./Radio";
 
 type TooltipProps = {
   selected: frameworkOptions;
-  setFramework: (name: string, srcPath: string, forcedUpdate?: boolean) => void;
-  resetFramework: () => void;
+  setFramework: (name: string, srcPath: string, forceReRender?: boolean) => void;
+  resetFramework: (forceReRender?: boolean) => void;
   options: frameworkOptions[];
   clearable?: boolean;
 };
@@ -29,7 +29,12 @@ export const Tooltip = (props: TooltipProps) => {
     title: title ?? id,
     srcPath: srcPath,
     active: false,
-    onClick: () => { setFramework(id, srcPath); },
+    onClick: () => {
+      setFramework(id, srcPath, false);
+      setTimeout(() => {
+        setFramework(id, srcPath, true);
+      }, 500);
+    },
     center: description ? (
       <Container>
         <div title={description}>
@@ -42,7 +47,10 @@ export const Tooltip = (props: TooltipProps) => {
         value={id}
         checked={id === selected.id}
         setValue={(value) => {
-          setFramework(id, srcPath);
+          setFramework(id, srcPath, false);
+          setTimeout(() => {
+            setFramework(id, srcPath, true);
+          }, 500);
         }}
       />
     ),
@@ -56,7 +64,12 @@ export const Tooltip = (props: TooltipProps) => {
       loading: false,
       title: 'Reset CSS Framework',
       active: false,
-      onClick: resetFramework,
+      onClick: () => {
+        resetFramework(false);
+        setTimeout(() => {
+          resetFramework(true);
+        }, 500);
+      },
       right: <Icons icon="cross" />
     });
   }
