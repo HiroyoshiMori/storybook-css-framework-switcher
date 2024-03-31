@@ -1,6 +1,6 @@
 {
   "name": "@hiroyoshi-mori/storybook-css-framework-switcher",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Easy switcher it switches CSS Framework used in preview",
   "keywords": [
     "css framework",
@@ -43,10 +43,8 @@
     "release": "npm run build && auto shipit",
     "eject-ts": "zx scripts/eject-typescript.mjs",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
-  "peerDependencies": {
-    "@storybook/blocks": "^7.0.0"
+    "build-storybook": "storybook build",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@babel/traverse": "^7.23.9",
