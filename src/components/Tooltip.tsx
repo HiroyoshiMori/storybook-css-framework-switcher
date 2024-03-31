@@ -1,9 +1,6 @@
 import React, {
   ComponentProps,
-  Fragment
 } from "react";
-import { useParameter } from "@storybook/manager-api";
-import { PARAM_KEY } from "../constants";
 import { frameworkOptions } from "../types";
 import { Icons, TooltipLinkList } from "@storybook/components";
 import { styled } from "@storybook/theming";
